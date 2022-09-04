@@ -1,9 +1,8 @@
 '''
 Author: Ivan Pua
-Description: A modular code for preprocessing tabular data, 
-training a simple ML model, and scoring it
+Description: A modular code that preprocesses tabular data, 
+trains a simple ML model, and scores it
 '''
-
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -14,7 +13,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import AdaBoostClassifier
 
 
-def tabular_data_classification():
+def structured_data_classification():
     
     print("Reading data...")
     df = pd.read_csv("data.csv")
@@ -65,4 +64,4 @@ def tabular_data_classification():
 if __name__ == '__main__':
     
     # TODO: add arguments for inputs
-    tabular_data_classification()
+    structured_data_classification()
