@@ -1,11 +1,17 @@
-import numbers
+'''
+Author: Ivan Pua
+Description: A modular code for preprocessing tabular data, 
+training a simple ML model, and scoring it
+'''
+
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OrdinalEncoder
 from sklearn.compose import ColumnTransformer
-from sklearn.linear_model import LogisticRegressionCV
+from sklearn.ensemble import AdaBoostClassifier
 
 
 def tabular_data_classification():
@@ -42,8 +48,10 @@ def tabular_data_classification():
             ('cat', categorical_transformer, categorical_features)
         ])
     
-    model = LogisticRegressionCV(cv=5,random_state=0)
+    model = AdaBoostClassifier(n_estimators=100, random_state=0)
     
+    print("Training data...")
+
     pipeline = Pipeline(steps=[('preprocessor', preprocessor),
                     ('classifier', model)
                    ])
@@ -55,4 +63,6 @@ def tabular_data_classification():
     
     
 if __name__ == '__main__':
+    
+    # TODO: add arguments for inputs
     tabular_data_classification()
